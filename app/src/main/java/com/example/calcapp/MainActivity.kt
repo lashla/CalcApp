@@ -6,7 +6,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.StringBuilder
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private var isOperationButtonClicked: Boolean = false
     private var isEqualButtonClicked: Boolean = false
 
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btnListeners()
+
     }
 
     private fun btnListeners() {
@@ -133,6 +133,7 @@ class MainActivity : AppCompatActivity() {
         tvInput.text = currentValue
         isOperationButtonClicked = true
         lastOperation = operationName
+
     }
     private fun onEqualButtonClick(lastOperation: String) {
         if (lastOperation.isEmpty() || currentValue.isEmpty() || pastValue.isEmpty()) {
