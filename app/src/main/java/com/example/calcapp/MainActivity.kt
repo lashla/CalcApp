@@ -126,26 +126,41 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         isOperationButtonClicked = false
     }
     private fun onOperationButtonClick(operationName: String){
-        pastNumber = currentNumber
-        pastValue = currentValue
-        currentNumber = 0.0
-        currentValue = ""
+
+            pastNumber = currentNumber
+            pastValue = currentValue
+            currentNumber = 0.0
+            currentValue = ""
+
         tvInput.text = currentValue
         isOperationButtonClicked = true
         lastOperation = operationName
-
+        isEqualButtonClicked = false
     }
     private fun onEqualButtonClick(lastOperation: String) {
         if (lastOperation.isEmpty() || currentValue.isEmpty() || pastValue.isEmpty()) {
             Toast.makeText(this, "Something is wrong done", Toast.LENGTH_LONG).show()
         } else {
             when (lastOperation) {
-                "+" -> tvInput.text = ArithmeticOperations.addition(currentNumber, pastNumber)
-                "-" -> tvInput.text = ArithmeticOperations.subtract(currentNumber, pastNumber)
-                "*" -> tvInput.text = ArithmeticOperations.multiply(currentNumber, pastNumber)
-                "/" -> tvInput.text = ArithmeticOperations.divide(currentNumber, pastNumber)
+                "+" -> {
+                    tvInput.text = ArithmeticOperations.addition(currentNumber, pastNumber)
+                    pastValue = tvInput.text.toString()
+                }
+                "-" -> {
+                    tvInput.text = ArithmeticOperations.subtract(currentNumber, pastNumber)
+                    pastValue = tvInput.text.toString()
+                }
+                "*" -> {
+                    tvInput.text = ArithmeticOperations.multiply(currentNumber, pastNumber)
+                    pastValue = tvInput.text.toString()
+                }
+                "/" -> {
+                    tvInput.text = ArithmeticOperations.divide(currentNumber, pastNumber)
+                    pastValue = tvInput.text.toString()
+                }
             }
         }
+        isOperationButtonClicked = false
         isEqualButtonClicked = true
     }
 }
