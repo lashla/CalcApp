@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private var lastOperation: String = ""
 
     private val ADDITION = "+"
-    private val SUBTRACTION = "−"
-    private val MULTIPLICATION = "×"
+    private val SUBTRACTION = "-"
+    private val MULTIPLICATION = "*"
     private val DIVISION = "÷"
 
 
@@ -126,12 +126,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         isOperationButtonClicked = false
     }
     private fun onOperationButtonClick(operationName: String){
-
-            pastNumber = currentNumber
-            pastValue = currentValue
-            currentNumber = 0.0
-            currentValue = ""
-
+        pastNumber = currentNumber
+        pastValue = currentValue
+        currentNumber = 0.0
+        currentValue = ""
         tvInput.text = currentValue
         isOperationButtonClicked = true
         lastOperation = operationName
@@ -144,19 +142,23 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             when (lastOperation) {
                 "+" -> {
                     tvInput.text = ArithmeticOperations.addition(currentNumber, pastNumber)
-                    pastValue = tvInput.text.toString()
+                    currentValue = tvInput.text.toString()
+                    currentNumber = currentValue.toDouble()
                 }
                 "-" -> {
                     tvInput.text = ArithmeticOperations.subtract(currentNumber, pastNumber)
-                    pastValue = tvInput.text.toString()
+                    currentValue = tvInput.text.toString()
+                    currentNumber = currentValue.toDouble()
                 }
                 "*" -> {
                     tvInput.text = ArithmeticOperations.multiply(currentNumber, pastNumber)
-                    pastValue = tvInput.text.toString()
+                    currentValue = tvInput.text.toString()
+                    currentNumber = currentValue.toDouble()
                 }
-                "/" -> {
+                "÷" -> {
                     tvInput.text = ArithmeticOperations.divide(currentNumber, pastNumber)
-                    pastValue = tvInput.text.toString()
+                    currentValue = tvInput.text.toString()
+                    currentNumber = currentValue.toDouble()
                 }
             }
         }
