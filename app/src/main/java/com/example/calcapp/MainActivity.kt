@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btnListeners()
+        setupButtonClickListeners()
     }
 
-    private fun btnListeners() {
+    private fun setupButtonClickListeners() {
         btn0.setOnClickListener {
             onNumberButtonClick(ZERO)
         }
